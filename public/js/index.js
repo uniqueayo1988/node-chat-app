@@ -17,6 +17,10 @@ socket.on('disconnect', function() {
 socket.on('newMessage', function(message) {
   console.log('New Message', message)
 })
-  // socket.on('adminMsg', function(message) {
-  //   console.log('Admin Message', message)
-  // })
+
+socket.emit('createMessage', {
+  from: 'John',
+  text: 'Hi'
+}, function (serverMsg) {
+  console.log('Got it', serverMsg)
+})
