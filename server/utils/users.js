@@ -1,17 +1,19 @@
-[{
-  id: "asdsdfdds",
-  name: "Ade",
-  room: "A"
-}]
-
-// addUser(id, name, room)
-// removeUser(id)
-// getUser(id)
-// getUserList(Room)
-
 class Users {
   constructor () {
     this.users = []
+    // this.users = [{
+    //     id: "1",
+    //     name: "John",
+    //     room: "Node",
+    //   },{
+    //     id: "2",
+    //     name: "Faith",
+    //     room: "Java",
+    //   },{
+    //     id: "3",
+    //     name: "Kate",
+    //     room: "Node",
+    //   }];
   }
 
   addUser (id, name, room) {
@@ -20,13 +22,34 @@ class Users {
 
     return user;
   }
+
+  getUser (id) {
+    return this.users.filter((user) => user.id === id)[0]
+  }
+
+  removeUser (id) {
+    var user = this.getUser(id)
+
+    if (user) {
+      this.users = this.users.filter((user) => user.id !== id);
+    }
+
+    return user;
+  }
+
+  getUserList (room) {
+    var users = this.users.filter((user) => user.room === room);
+    var namesArray = users.map((user) => user.name);
+
+    return namesArray;
+  }
 }
 
 module.exports = {Users}
 
-const test = new Users();
-
-console.log(test.users)
+// const test = new Users();
+// console.log(test.users)
+// console.log(test.getUserList('Node'))
 
 // class Person {
 //   constructor (name, age) {
